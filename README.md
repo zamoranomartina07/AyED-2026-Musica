@@ -7,7 +7,7 @@ Repositorio del grupo. Partir de este esqueleto. No borrar la estructura de `src
 | Nombre | Mail | GitHub |
 | --- | --- | --- |
 | Martina Zamorano | zamoranomartina07@gmail.com | zamoranomartina07 |
-|  Andrea Lescano Muñoz  | andrealescano200226@gmail.com | andrealescano200226-source |
+|  Andrea Lescano Muñoz  | andrealescano200226@gmail.com |andrealescano200226-source |
 | Emiliano German Gomez | emilianog.gomez@outlook.com | emi-ger |
 
 **Tema elegido:** Biblioteca musical 

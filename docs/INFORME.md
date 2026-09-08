@@ -5,15 +5,31 @@ Completar y hacer crecer en cada entrega. No hace falta prosa larga: oraciones c
 ## 1. Grupo y tema
 
 - Tema: Musica
-- Por qué lo eligieron (5–8 líneas):
+- Por qué lo eligieron : Elegimos el tema **Biblioteca Musical** porque nos permite modelar una estructura clara y realista de datos interactivos sobre un tema de interes de los integrantes del grupo
+
 
 ## 2. Modelo
 
-Qué es un ítem del catálogo. Qué es mutable y qué no (E1). Cómo se relacionan catálogo, colección principal, pila y cola.
+## Ítem del Catálogo
+Un ítem del catálogo es una **Canción** (`Cancion`), que representa una pista de audio en la biblioteca. Sus atributos principales son:
+* `id` (identificador único)
+* `titulo`
+* `artista`
+* `album`
+* `genero`
+* `duracion_seg` (duración en segundos)
 
-```text
-(pueden pegar un diagrama ASCII o una lista de clases)
-```
+---
+
+## Mutabilidad e Inmutabilidad (E1)
+
+### Datos Inmutables
+* **ID (`id`):** Es el identificador único de la canción. No cambia a lo largo del tiempo para preservar la integridad de las referencias.
+* **Duración (`duracion_seg`):** Es un valor fijo inherente al archivo o grabación de la pista.
+
+### Datos Mutables
+* **Metadatos de la Canción (`titulo`, `artista`, `album`, `genero`):** Pueden modificarse si el usuario edita o corrige la información de una pista.
+* **Colecciones y Estructuras:** El catálogo global, la playlist principal, el historial y la cola de reproducción son estructuras dinámicas que cambian continuamente al agregar, eliminar o reordenar canciones.
 
 ## 3. Recursión (E2)
 

@@ -1,5 +1,5 @@
 from src.config import TEMA
-from src.dominio.catalogo import CANCIONES
+from src.dominio.biblioteca import Biblioteca
 
 TEMAS = {
     "pokedex": "Pokédex",
@@ -12,7 +12,7 @@ def pendiente():
   print("Todavía no está implementado. Completar en la entrega que corresponde.")
 
 
-def listar_catalogo():
+def listar_catalogo(biblioteca):
   print("\n" + "=" * 110)
   print(" " * 40 + "CATÁLOGO DE LA BIBLIOTECA MUSICAL")
   print("=" * 110)
@@ -21,13 +21,28 @@ def listar_catalogo():
       f" {'GÉNERO':<10} | {'DURACIÓN'}"
   )
   print("-" * 110)
-
-  for c in CANCIONES:
+  for c in biblioteca.listar():
     print(
-        f"{c['id']:<4} | {c['titulo']:<28} | {c['artista']:<25} |"
-        f" {c['album']:<22} | {c['genero']:<10} | {c['duracion_seg']} s"
+        f"{c.id:<4} | {c.titulo:<28} | {c.artista:<25} |"
+        f" {c.album:<22} | {c.genero:<10} | {c.duracion_seg} s"
     )
   print("=" * 110)
+
+
+def mostrar_versiones(biblioteca):
+  id_cancion = input("ID de la canción: ").strip()
+  cancion = biblioteca.buscar(id_cancion)
+  if cancion is None:
+    print("No existe esa canción.")
+    return
+  ids_versiones = biblioteca.versiones_de(id_cancion)
+  if not ids_versiones:
+    print(f"'{cancion.titulo}' no tiene versiones registradas.")
+    return
+  print(f"Versiones derivadas de '{cancion.titulo}':")
+  for id_v in ids_versiones:
+    v = biblioteca.buscar(id_v)
+    print(f" - {v.titulo} ({v.artista})")
 
 
 def mostrar_menu():
@@ -38,7 +53,7 @@ def mostrar_menu():
   print("2. Ver detalle")
   print("3. Buscar")
   print("4. Ordenar")
-  print("5. Operación recursiva")
+  print("5. Operación recursiva (versiones de una canción)")
   print("6. Colección principal (equipo / menú / playlist)")
   print("7. Historial (pila)")
   print("8. Cola")
@@ -51,6 +66,7 @@ def main():
     print("Seteá TEMA en src/config.py: 'pokedex', 'recetario' o 'musica'.")
     return
 
+  biblioteca = Biblioteca()
   opcion = None
   while opcion != "0":
     mostrar_menu()
@@ -58,8 +74,10 @@ def main():
     if opcion == "0":
       print("Chau.")
     elif opcion == "1":
-      listar_catalogo()
-    elif opcion in {"2", "3", "4", "5", "6", "7", "8", "9"}:
+      listar_catalogo(biblioteca)
+    elif opcion == "5":
+      mostrar_versiones(biblioteca)
+    elif opcion in {"2", "3", "4", "6", "7", "8", "9"}:
       pendiente()
     else:
       print("Opción inválida.")

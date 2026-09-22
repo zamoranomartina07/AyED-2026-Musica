@@ -33,10 +33,24 @@ Un ítem del catálogo es una **Canción** (`Cancion`), que representa una pista
 
 ## 3. Recursión (E2)
 
-- Función:
-- Caso base:
-- Caso recursivo:
-- Traza de un ejemplo real del dataset:
+- **Función:** `versiones_de(versionable, id_cancion)`
+- **Caso base:** Si la canción no tiene versiones derivadas en `versiones.txt`, devuelve una lista vacía `[]`.
+- **Caso recursivo:** Obtiene las versiones directas, hace la llamada recursiva para cada una y concatena los resultados.
+
+### Traza de un ejemplo real del dataset
+**Ejemplo probado:** Buscar todas las versiones derivadas de la Canción ID `12`.  
+**Datos reales de `data/versiones.txt`:**  
+* `13,12,live` (la canción 13 es un Live de la 12)
+
+**Llamadas recursivas (Apilado):**
+1. `versiones_de(12)` $\rightarrow$ versión directa encontrada: `13`. Llama a `[13] + versiones_de(13)`.
+2. `versiones_de(13)` $\rightarrow$ no tiene versiones derivadas registradas. **Alcanza el Caso Base** y devuelve `[]`.
+
+**Resolución de retorno (Desapilado):**
+* Retorno de `versiones_de(13)`: `[]`
+* Retorno de `versiones_de(12)`: `[13] + []` = `[13]`
+
+**Resultado final:** `[13]`
 
 ## 4. TADs (E3)
 

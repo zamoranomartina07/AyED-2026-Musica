@@ -1,5 +1,5 @@
 from src.config import TEMA
-from src.dominio.catalogo import CANCIONES
+from src.dominio.catalogo import CANCIONES, versiones_de
 
 TEMAS = {
     "pokedex": "Pokédex",
@@ -59,7 +59,13 @@ def main():
       print("Chau.")
     elif opcion == "1":
       listar_catalogo()
-    elif opcion in {"2", "3", "4", "5", "6", "7", "8", "9"}:
+    elif opcion == "5":
+      cancion = input("ID de canción: ").strip()
+      if cancion.isdigit():
+        print("Versiones encontradas:", versiones_de(int(cancion)))
+      else:
+        print("ID inválido.")
+    elif opcion in {"2", "3", "4", "6", "7", "8", "9"}:
       pendiente()
     else:
       print("Opción inválida.")

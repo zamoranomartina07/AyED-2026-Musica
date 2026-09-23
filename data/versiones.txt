@@ -1,0 +1,3 @@
+4,1,cover
+5,4,live
+6,2,remix

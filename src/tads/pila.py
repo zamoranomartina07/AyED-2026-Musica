@@ -1,17 +1,34 @@
+from src.tads.lista_enlazada import ListaEnlazada
+from src.excepciones import PilaVaciaError
+
+
 class Pila:
     """TAD pila implementado sobre ListaEnlazada."""
 
-    def __init__(self):
-        raise NotImplementedError
+        def __init__(self):
+                self._items = ListaEnlazada()
 
-    def apilar(self, dato):
-        raise NotImplementedError
+                    def apilar(self, dato):
+                            self._items.insertar_al_inicio(dato)
 
-    def desapilar(self):
-        raise NotImplementedError
+                                def desapilar(self):
+                                        if self.esta_vacia():
+                                                    raise PilaVaciaError("No hay elementos en el historial para deshacer.")
+                                                            tope = self.ver_tope()
+                                                                    self._items.eliminar(tope)
+                                                                            return tope
 
-    def ver_tope(self):
-        raise NotImplementedError
+                                                                                def ver_tope(self):
+                                                                                        if self.esta_vacia():
+                                                                                                    raise PilaVaciaError("La pila está vacía.")
+                                                                                                            for dato in self._items:
+                                                                                                                        return dato
 
-    def esta_vacia(self):
-        raise NotImplementedError
+                                                                                                                            def esta_vacia(self):
+                                                                                                                                    return self._items.esta_vacia()
+
+                                                                                                                                        def tamanio(self):
+                                                                                                                                                return self._items.tamanio()
+
+                                                                                                                                                    def __iter__(self):
+                                                                                                                                                            return iter(self._items)

@@ -1,17 +1,34 @@
+from src.tads.lista_enlazada import ListaEnlazada
+from src.excepciones import ColaVaciaError
+
+
 class Cola:
     """TAD cola implementado sobre ListaEnlazada."""
 
-    def __init__(self):
-        raise NotImplementedError
+        def __init__(self):
+                self._items = ListaEnlazada()
 
-    def encolar(self, dato):
-        raise NotImplementedError
+                    def encolar(self, dato):
+                            self._items.insertar_al_final(dato)
 
-    def desencolar(self):
-        raise NotImplementedError
+                                def desencolar(self):
+                                        if self.esta_vacia():
+                                                    raise ColaVaciaError("No hay elementos en la cola.")
+                                                            frente = self.ver_frente()
+                                                                    self._items.eliminar(frente)
+                                                                            return frente
 
-    def ver_frente(self):
-        raise NotImplementedError
+                                                                                def ver_frente(self):
+                                                                                        if self.esta_vacia():
+                                                                                                    raise ColaVaciaError("La cola está vacía.")
+                                                                                                            for dato in self._items:
+                                                                                                                        return dato
 
-    def esta_vacia(self):
-        raise NotImplementedError
+                                                                                                                            def esta_vacia(self):
+                                                                                                                                    return self._items.esta_vacia()
+
+                                                                                                                                        def tamanio(self):
+                                                                                                                                                return self._items.tamanio()
+
+                                                                                                                                                    def __iter__(self):
+                                                                                                                                                            return iter(self._items)

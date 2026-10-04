@@ -8,7 +8,7 @@ Fecha de esta versión del archivo:
 | --- | --- | --- | --- | --- | --- | --- |
 | E1 | 06/09/2026 | ChatGPT / Gemini | Docs y estructura inicial | Justificación del modelo y menú inicial | Ajuste del modelo de datos y nombres de archivos | Martina Zamorano |
 | E2 | 22/09/2026 | Gemini | Docs y revisión de pruebas | Estructura de la traza de la recursión y protocolo de pruebas | Adaptación de la traza a datos reales de versiones.txt y revisión de casos | Martina Zamorano |
-| E3 |  |  |  |  |  |  |
+| E3 | 04/10/2026 | Claude | Codigo de ListaEnlazada,Pila,Cola,Playlist con tope,Historial y ColaReproduccion |pegue el codigo generador y lo adaptamos a los archivos del esqueleto  | Andrea Lescano |  |
 | E4 |  |  |  |  |  |  |
 | E5 |  |  |  |  |  |  |
 | E6 |  |  |  |  |  |  |

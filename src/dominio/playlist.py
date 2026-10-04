@@ -10,7 +10,7 @@ from src.excepciones import ColeccionLlenaError, ItemNoEncontradoError
 class Playlist:
     """Colección principal con tope, sobre ListaEnlazada."""
 
-    def __init__(self, tope=5):
+    def __init__(self, tope=6):
         self._canciones = ListaEnlazada()
         self._tope = tope
 

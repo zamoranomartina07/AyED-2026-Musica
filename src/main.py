@@ -1,9 +1,14 @@
-from config import TEMA
-from dominio.biblioteca import Biblioteca
-from dominio.playlist import Playlist
-from dominio.historial import Historial
-from dominio.cola_reproduccion import ColaReproduccion
-from excepciones import (
+import sys
+from pathlib import Path
+
+sys.path.append(str(Path(__file__).resolve().parent.parent))
+
+from src.config import TEMA
+from src.dominio.biblioteca import Biblioteca
+from src.dominio.playlist import Playlist
+from src.dominio.historial import Historial
+from src.dominio.cola_reproduccion import ColaReproduccion
+from src.excepciones import (
     ColeccionLlenaError,
         PilaVaciaError,
             ColaVaciaError,

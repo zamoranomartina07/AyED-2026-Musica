@@ -66,7 +66,13 @@ Dónde se usa cada uno en el dominio.
 
 | Operación | Tiempo | Espacio | Por qué |
 | --- | --- | --- | --- |
-|  |  |  |  |
+| Listar catálogo | O(n) | O(1) | Recorre cada elemento una sola vez, sin copiar nada. |
+| Búsqueda lineal | O(n) | O(1) | En el peor caso (no existe) compara contra los n elementos. |
+| Búsqueda binaria | O(log n) | O(1) | Descarta la mitad de la colección en cada paso: hacen falta log₂ n pasos. |
+| Ordenar por selección | O(n²) | O(n) | Dos bucles anidados que siempre se ejecutan completos; el O(n) es la copia que devuelve. |
+| Ordenar por inserción | O(n²) | O(n) | Peor caso (lista inversa): cada elemento se compara con todos los anteriores. Mejor caso (ya ordenada): O(n). |
+| Pila (apilar/desapilar) | O(1) | O(1) | Solo se toca el tope, sin recorrer nada. |
+| Cola (encolar/desencolar) | O(1) | O(1) | Se opera en un extremo, sin recorrer. Revisar cómo está implementada. |
 
 Mediciones (`time.perf_counter`):
 

@@ -72,7 +72,13 @@ Dónde se usa cada uno en el dominio.
 | Ordenar por selección | O(n²) | O(n) | Dos bucles anidados que siempre se ejecutan completos; el O(n) es la copia que devuelve. |
 | Ordenar por inserción | O(n²) | O(n) | Peor caso (lista inversa): cada elemento se compara con todos los anteriores. Mejor caso (ya ordenada): O(n). |
 | Pila (apilar/desapilar) | O(1) | O(1) | Solo se toca el tope, sin recorrer nada. |
-| Cola (encolar/desencolar) | O(1) | O(1) | Se opera en un extremo, sin recorrer. Revisar cómo está implementada. |
+| Cola: encolar | O(n) | O(1) | Usa insertar_al_final de la lista enlazada, que recorre todos los nodos hasta el último porque no hay puntero al final. |
+| Cola: desencolar | O(1) | O(1) | El frente es la cabeza de la lista: se lee y se elimina sin recorrer. |
+| Lista enlazada: insertar al inicio | O(1) | O(1) | Solo se crea un nodo y se cambia la cabeza. |
+| Lista enlazada: insertar al final | O(n) | O(1) | Recorre hasta el último nodo, no hay puntero al final. |
+| Lista enlazada: insertar ordenado | O(n) | O(1) | Recorre hasta encontrar la posición según la clave. |
+| Lista enlazada: buscar / eliminar | O(n) | O(1) | Recorre nodo por nodo; en el peor caso el dato está al final o no existe. |
+| Lista enlazada: recorrer | O(n) | O(1) | Visita cada nodo una vez. |
 
 Mediciones (`time.perf_counter`):
 

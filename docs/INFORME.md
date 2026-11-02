@@ -66,13 +66,29 @@ Dónde se usa cada uno en el dominio.
 
 | Operación | Tiempo | Espacio | Por qué |
 | --- | --- | --- | --- |
-|  |  |  |  |
+| Listar catálogo | O(n) | O(1) | Recorre cada elemento una sola vez, sin copiar nada. |
+| Búsqueda lineal | O(n) | O(1) | En el peor caso (no existe) compara contra los n elementos. |
+| Búsqueda binaria | O(log n) | O(1) | Descarta la mitad de la colección en cada paso: hacen falta log₂ n pasos. |
+| Ordenar por selección | O(n²) | O(n) | Dos bucles anidados que siempre se ejecutan completos; el O(n) es la copia que devuelve. |
+| Ordenar por inserción | O(n²) | O(n) | Peor caso (lista inversa): cada elemento se compara con todos los anteriores. Mejor caso (ya ordenada): O(n). |
+| Pila (apilar/desapilar) | O(1) | O(1) | Solo se toca el tope, sin recorrer nada. |
+| Cola: encolar | O(n) | O(1) | Usa insertar_al_final de la lista enlazada, que recorre todos los nodos hasta el último porque no hay puntero al final. |
+| Cola: desencolar | O(1) | O(1) | El frente es la cabeza de la lista: se lee y se elimina sin recorrer. |
+| Lista enlazada: insertar al inicio | O(1) | O(1) | Solo se crea un nodo y se cambia la cabeza. |
+| Lista enlazada: insertar al final | O(n) | O(1) | Recorre hasta el último nodo, no hay puntero al final. |
+| Lista enlazada: insertar ordenado | O(n) | O(1) | Recorre hasta encontrar la posición según la clave. |
+| Lista enlazada: buscar / eliminar | O(n) | O(1) | Recorre nodo por nodo; en el peor caso el dato está al final o no existe. |
+| Lista enlazada: recorrer | O(n) | O(1) | Visita cada nodo una vez. |
 
 Mediciones (`time.perf_counter`):
 
 | Operación | n | segundos |
-| --- | --- | --- |
-|  |  |  |
+| Busqueda Lineal (nombre) | 3 | 0.000005 |
+| Busqueda Lineal (n x 10) | 30 | 0.000006 |
+| Busqueda Lineal (n x 1000) | 3000 | 0.000156 |
+| Busqueda binaria (nombre) | 3 | 0.000004 |
+| Busqueda binaria (n x 10) | 30 | 0.000004 |
+| Busqueda binaria (n x 1000) | 3000 | 0.000008 |
 
 ## 6. Persistencia (E5)
 

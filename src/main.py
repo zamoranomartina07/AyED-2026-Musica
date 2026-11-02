@@ -14,6 +14,9 @@ from src.excepciones import (
             ColaVaciaError,
                 ItemNoEncontradoError,
                 )
+from src.algoritmos.busqueda import busqueda_lineal, busqueda_binaria
+from src.algoritmos.ordenamiento import ordenar_seleccion, ordenar_insercion
+
 
 TEMAS = {
     "pokedex": "Pokédex",
@@ -52,7 +55,8 @@ def mostrar_versiones(biblioteca):
     print(f"Versiones derivadas de '{cancion.titulo}':")
     for id_v in ids_versiones:
         v = biblioteca.buscar(id_v)
-        print(f" - {v.titulo} ({v.artista})")
+        if v is not None:
+            print(f" - {v.titulo} ({v.artista})")
 
 
 def pedir_cancion(biblioteca):
@@ -150,6 +154,84 @@ def menu_cola(biblioteca, cola, historial):
         else:
             print("Opción inválida.")
 
+def menu_busqueda(biblioteca):
+    while True:
+        print("\n--- Búsqueda ---")
+        print("1. Búsqueda lineal")
+        print("2. Búsqueda binaria (requiere colección ordenada)")
+        print("0. Volver")
+        opcion = input("> ").strip()
+
+        if opcion == "0":
+            break
+        elif opcion == "1":
+            clave = input("Ingrese la clave a buscar: ").strip()
+            resultado = busqueda_lineal(biblioteca.listar(), clave, obtener_clave=lambda c: c.id)
+            if resultado:
+                print(f"✅ Canción encontrada: {resultado}")
+            else:
+                print("❌ Canción no encontrada.")
+        elif opcion == "2":
+            clave = input("Ingrese la clave a buscar: ").strip()
+            # Suponiendo que la colección está ordenada por ID
+            resultado = busqueda_binaria(sorted(biblioteca.listar(), key=lambda c: c.id), clave, obtener_clave=lambda c: c.id)
+            if resultado:
+                print(f"✅ Canción encontrada: {resultado}")
+            else:
+                print("❌ Canción no encontrada.")
+        else:
+            print("Opción inválida.")
+
+def menu_ordenamiento(biblioteca):
+    while True:
+        print("\n--- Ordenamiento ---")
+        print("1. Ordenamiento por selección")
+        print("2. Ordenamiento por inserción")
+        print("0. Volver")
+        opcion = input("> ").strip()
+
+        if opcion == "0":
+            break
+        elif opcion == "1":
+            print("\n--- Ordenamiento ---")
+            print("1. Ordenar por titulo")
+            print("2. Ordenamiento por duración")
+            print("0. Volver")
+            opcion = input("> ").strip()
+
+            if opcion == "0":
+                break
+            elif opcion == "1":
+                canciones_ordenadas = ordenar_seleccion(biblioteca.listar(), clave=lambda c: c.titulo)
+                print("✅ Canciones ordenadas por título (Selección):")
+                for c in canciones_ordenadas:
+                    print(f" - {c}")
+            elif opcion == "2":
+                canciones_ordenadas = ordenar_seleccion(biblioteca.listar(), clave=lambda c: c.duracion_seg)
+                print("✅ Canciones ordenadas por duración (Selección):")
+                for c in canciones_ordenadas:
+                    print(f" - {c}")
+        elif opcion == "2":
+            print("\n--- Ordenamiento ---")
+            print("1. Ordenar por titulo")
+            print("2. Ordenamiento por duración")
+            print("0. Volver")
+            opcion = input("> ").strip()
+
+            if opcion == "0":
+                break
+            elif opcion == "1":
+                canciones_ordenadas = ordenar_insercion(biblioteca.listar(), clave=lambda c: c.titulo)
+                print("✅ Canciones ordenadas por título (Inserción):")
+                for c in canciones_ordenadas:
+                    print(f" - {c}")
+            elif opcion == "2":
+                canciones_ordenadas = ordenar_insercion(biblioteca.listar(), clave=lambda c: c.duracion_seg)
+                print("✅ Canciones ordenadas por duración (Inserción):")
+                for c in canciones_ordenadas:
+                    print(f" - {c}")
+        else:
+            print("Opción inválida.")
 
 def mostrar_menu():
     nombre = TEMAS.get(TEMA, TEMA) or "(sin tema)"
@@ -186,6 +268,10 @@ def main():
             print("Chau.")
         elif opcion == "1":
             listar_catalogo(biblioteca)
+        elif opcion == "3":
+            menu_busqueda(biblioteca)      
+        elif opcion == "4":
+            menu_ordenamiento(biblioteca)
         elif opcion == "5":
             mostrar_versiones(biblioteca)
         elif opcion == "6":
@@ -194,11 +280,10 @@ def main():
             menu_historial(historial)
         elif opcion == "8":
             menu_cola(biblioteca, cola, historial)
-        elif opcion in {"2", "3", "4", "9"}:
+        elif opcion in {"2", "9"}:
             pendiente()
         else:
             print("Opción inválida.")
-
 
 if __name__ == "__main__":
     main()

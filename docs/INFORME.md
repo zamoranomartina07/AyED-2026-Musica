@@ -83,8 +83,12 @@ Dónde se usa cada uno en el dominio.
 Mediciones (`time.perf_counter`):
 
 | Operación | n | segundos |
-| --- | --- | --- |
-|  |  |  |
+| Busqueda Lineal (nombre) | 3 | 0.000005 |
+| Busqueda Lineal (n x 10) | 30 | 0.000006 |
+| Busqueda Lineal (n x 1000) | 3000 | 0.000156 |
+| Busqueda binaria (nombre) | 3 | 0.000004 |
+| Busqueda binaria (n x 10) | 30 | 0.000004 |
+| Busqueda binaria (n x 1000) | 3000 | 0.000008 |
 
 ## 6. Persistencia (E5)
 

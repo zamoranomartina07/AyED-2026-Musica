@@ -10,7 +10,7 @@ Fecha de esta versión del archivo:
 | E2 | 22/09/2026 | Gemini | Docs y revisión de pruebas | Estructura de la traza de la recursión y protocolo de pruebas | Adaptación de la traza a datos reales de versiones.txt y revisión de casos | Martina Zamorano |
 | E3 |  |  |  |  |  |  |
 | E4 |  |  |  |  |  |  |
-| E5 |  |  |  |  |  |  |
+| E5 |  13/11/2026  |  Gemini / Claude  |  estructurar la lógica de serialización con el módulo struct de Python, calcular los desplazamientos mediante seek() en acceso directo y diseñar el manejo de excepciones personalizadas (ArchivoInvalidoError).  | Martina Zamorano
 | E6 |  |  |  |  |  |  |
 
 Compromiso: cualquiera del grupo puede explicar cualquier archivo del tag.

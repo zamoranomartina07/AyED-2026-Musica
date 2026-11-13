@@ -1,5 +1,6 @@
 from src.config import TEMA
 from src.dominio.catalogo import CANCIONES, versiones_de
+from src.dominio.biblioteca import Biblioteca
 
 TEMAS = {
     "pokedex": "Pokédex",

@@ -52,3 +52,13 @@ class Biblioteca:
         for v in directas:             # CASO RECURSIVO
             resultado += self.versiones_de(v)
         return resultado
+
+
+from src.dominio.catalogo import CANCIONES
+
+class Biblioteca:
+    def __init__(self):
+        self.canciones = CANCIONES
+
+    def obtener_todas(self):
+        return self.canciones

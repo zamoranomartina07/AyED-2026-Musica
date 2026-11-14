@@ -4,24 +4,19 @@ from pathlib import Path
 sys.path.append(str(Path(__file__).resolve().parent.parent))
 
 from src.config import TEMA
-<<<<<<< HEAD
 from src.dominio.catalogo import CANCIONES, versiones_de
-from src.dominio.biblioteca import Biblioteca
-=======
 from src.dominio.biblioteca import Biblioteca
 from src.dominio.playlist import Playlist
 from src.dominio.historial import Historial
 from src.dominio.cola_reproduccion import ColaReproduccion
 from src.excepciones import (
     ColeccionLlenaError,
-        PilaVaciaError,
-            ColaVaciaError,
-                ItemNoEncontradoError,
-                )
+     PilaVaciaError,
+     ColaVaciaError,
+    ItemNoEncontradoError,)
 from src.algoritmos.busqueda import busqueda_lineal, busqueda_binaria
 from src.algoritmos.ordenamiento import ordenar_seleccion, ordenar_insercion
 
->>>>>>> d7dbc11dd66f9ffeadb31e00cd8b18a3ae9b0764
 
 TEMAS = {
     "pokedex": "Pokédex",
@@ -291,4 +286,4 @@ def main():
             print("Opción inválida.")
 
 if __name__ == "__main__":
-    main()
+    main() 

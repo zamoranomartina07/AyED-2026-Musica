@@ -24,6 +24,6 @@ Mínimos: 8 casos escritos en E2; ejecutados en E3; 15 de regresión en E6 (pila
 | P10 | E4 | Búsqueda lineal de un nombre que no existe | ID = -1 | no encontrado, sin traceback | pas | muestra el mensaje de "Canción no encontrada" y vuelve al menu de busqueda |
 | P11 | E4 | Búsqueda binaria con catálogo desordenado | ID=2 | avisa o reordena; no da un falso hit | pasa | Encuentra la cancion correctamente pero no avisa que ejecuta un ordenamiento |
 | P12 | E4 | Ordenar por un criterio y después por otro | titulo/duracion | el orden cambia | pasa | El ordenamiento se aplico bien, cambia al cambiar de criterio (titulo/duracion) |
-| P13 | E5 | Guardar CSV, salir, volver a entrar |  | los datos siguen |  |  |
-| P14 | E5 | Guardar binario y modificar un registro por id |  | al recargar, ese campo cambió |  |  |
-| P15 | E5 | Abrir un binario truncado o con magia mala | archivo basura | excepción de archivo inválido |  |  |
+| P13 | E5 | Guardar CSV, salir, volver a entrar |  | los datos siguen | pasa | Tambien dimos de alta una cancion nueva, se guardo en data/canciones.csv y al reiniciar el programa el catálogo conservaba el registro agregado. |
+| P14 | E5 | Guardar binario y modificar un registro por id |  | al recargar, ese campo cambió | pasa | guardamos el catalogo de canciones en un archivo .bin y al modificarlo con el ABM los datos persisten en ambos archivos (el .csv y el .bin). |
+| P15 | E5 | Abrir un binario truncado o con magia mala | archivo basura | excepción de archivo inválido | pasa | intentamos cargar data/basura.bin y data/corto.bin; el sistema lanzó ArchivoInvalidoError, mostró el aviso sin traceback y el menú continuó operativo. |

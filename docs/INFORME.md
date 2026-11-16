@@ -92,9 +92,12 @@ Mediciones (`time.perf_counter`):
 
 ## 6. Persistencia (E5)
 
-- Layout del registro binario (campos, `struct`, anchos):
-- Header:
-- Cómo se actualiza un registro por posición:
+## 6. Persistencia (E5)
+
+- Layout del registro binario: `struct.Struct("<I 30s 25s 30s 12s 2H")` = 105 bytes.
+  `id` (I, 4 B), `titulo` (30 B), `artista` (25 B), `album` (30 B), `genero` (12 B), `anio` y `duracion_seg` (H, 2 B c/u). Cadenas UTF-8 recortadas/rellenadas con `\x00` al ancho fijo.
+- Header: `struct.Struct("<4s 1s I")` = 9 bytes: magia `AYED`, tema `M`, cantidad de registros.
+- Actualización por posición: `seek(HEADER.size + posicion * FORMATO.size)` y se pisa ese único registro (acceso directo, O(1)). El alta hace append al final y arregla la cantidad del header. La baja reescribe el archivo sin ese registro.
 
 ## 7. Reparto de trabajo (E6)
 

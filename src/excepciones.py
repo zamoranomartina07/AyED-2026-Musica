@@ -20,3 +20,4 @@ class ColaVaciaError(Exception):
 
 class ArchivoInvalidoError(Exception):
     pass
+

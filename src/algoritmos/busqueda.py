@@ -24,4 +24,4 @@ def busqueda_binaria(coleccion_ordenada, clave, obtener_clave):
             izquierda = medio + 1
         else:
             derecha = medio - 1
-    return None 
+    return None

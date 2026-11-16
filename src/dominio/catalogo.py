@@ -7,6 +7,7 @@ CANCIONES = [
         "artista": "Soda Stereo",
         "album": "Cancion Animal",
         "genero": "Rock",
+        "anio": "1990",
         "duracion_seg": "213",
     },
     {
@@ -15,6 +16,7 @@ CANCIONES = [
         "artista": "Soda Stereo",
         "album": "Signos",
         "genero": "Rock",
+        "anio": "1986",
         "duracion_seg": "263",
     },
     {
@@ -23,6 +25,7 @@ CANCIONES = [
         "artista": "Gustavo Cerati",
         "album": "Ahi vamos",
         "genero": "Rock",
+        "anio": "2006",
         "duracion_seg": "239",
     },
 ]
@@ -55,4 +58,3 @@ def versiones_de(id_cancion):
     pass
 
   return resultado
-

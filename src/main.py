@@ -15,7 +15,7 @@ from src.excepciones import (
     ItemNoEncontradoError,
     ArchivoInvalidoError
                 )
-from src.algoritmos.busqueda import busqueda_lineal, busqueda_binaria
+from src.algoritmos.busqueda import busqueda_lineal, busqueda_binaria, verificar_orden
 from src.algoritmos.ordenamiento import ordenar_seleccion, ordenar_insercion
 from src.persistencia.texto import (
     RUTA_CANCIONES,
@@ -124,7 +124,7 @@ def filas_del_catalogo(catalogo):
 def guardar_todo(catalogo):
     """Guarda el catálogo en .txt y .bin, sobrescribiendo ambos archivos."""
     guardar_texto(RUTA_CANCIONES, filas_del_catalogo(catalogo), ENCABEZADOS)
-    guardar_binario(RUTA_CANCIONES.with_suffix(".bin"), catalogo)
+    guardar_binario(RUTA_BIN, catalogo)
     print("✅ Catálogo guardado en .txt y .bin.")
 
 
@@ -192,7 +192,7 @@ def menu_busqueda(biblioteca):
                 elif sub_opcion in {"1", "2", "3", "4", "5"}:
                     clave = input("Ingrese la clave a buscar: ").strip()
                     if sub_opcion == "1":
-                        resultado = busqueda_lineal(biblioteca.listar(), clave, obtener_clave=lambda c: c.id)
+                        resultado = busqueda_lineal(biblioteca.listar(), int(clave), obtener_clave=lambda c: c.id)
                     elif sub_opcion == "2":
                         resultado = busqueda_lineal(biblioteca.listar(), clave, obtener_clave=lambda c: c.titulo)
                     elif sub_opcion == "3":
@@ -209,13 +209,32 @@ def menu_busqueda(biblioteca):
                 else:
                     print("Opción inválida.")
         elif opcion == "2":
-            clave = input("Ingrese la clave a buscar: ").strip()
-            # Suponiendo que la colección está ordenada por ID
-            resultado = busqueda_binaria(sorted(biblioteca.listar(), key=lambda c: c.id), clave, obtener_clave=lambda c: c.id)
-            if resultado:
-                print(f"✅ Canción encontrada: {resultado}")
-            else:
-                print("❌ Canción no encontrada.")
+            clave_str = input("Ingrese la clave a buscar (número de ID): ").strip()
+            if not clave_str.isdigit():
+                print("❌ Error: El ID debe ser un número entero.")
+                continue
+            clave = int(clave_str)
+            try:
+                lista_canciones = list(biblioteca.listar())
+                verificar_orden(lista_canciones, obtener_clave=lambda c: c.id)
+
+                resultado = busqueda_binaria(lista_canciones, clave, obtener_clave=lambda c: c.id)
+                if resultado:
+                    print(f"✅ Canción encontrada: {resultado}")
+                else:
+                    print("❌ Canción no encontrada.")
+            except ValueError as e:
+                print(f"❌ Error: {e} La busqueda binaria requiere que la colección esté ordenada por ID.")
+                print("¿Desea ordenar el catalogo automáticamente para continuar con la busqueda? (s/n):")
+                opcion = input(">").strip().lower()
+                if opcion == "s":
+                    lista_ordenada = ordenar_seleccion(biblioteca.listar(), clave=lambda c: c.id)
+                    biblioteca.actualizar_canciones(lista_ordenada)
+                    guardar_binario(RUTA_BIN, biblioteca)
+                    guardar_texto(RUTA_CANCIONES, filas_del_catalogo(lista_ordenada), ENCABEZADOS)
+                    print("✅ Catálogo ordenado por ID. Puede intentar la búsqueda nuevamente.")
+                else:
+                    print("❌ Búsqueda binaria cancelada. Por favor, ordene el catálogo antes de intentar nuevamente.")
         else:
             print("Opción inválida.")
 
@@ -419,7 +438,7 @@ def menu_catalogo(biblioteca,):
                 )
                 
                 biblioteca._canciones.insertar_al_final(nueva_cancion)
-                alta_binario(RUTA_CANCIONES.with_suffix(".bin"), nueva_cancion)
+                alta_binario(RUTA_BIN, nueva_cancion)
                 guardar_texto(RUTA_CANCIONES, filas_del_catalogo(biblioteca._canciones), ENCABEZADOS)
                 print(f"✅ Canción agregada: {nueva_cancion.resumen()}")
             except ValueError:
@@ -460,7 +479,7 @@ def menu_catalogo(biblioteca,):
                 if nuevo_duracion_str:
                     cancion_actual.duracion_seg = int(nuevo_duracion_str)
 
-                actualizar_registro(RUTA_CANCIONES.with_suffix(".bin"), posicion, cancion_actual)
+                actualizar_registro(RUTA_BIN, posicion, cancion_actual)
                 guardar_texto(RUTA_CANCIONES, filas_del_catalogo(biblioteca._canciones), ENCABEZADOS)
                 print(f"✅ Canción modificada: {cancion_actual.resumen()}")
 
@@ -483,7 +502,7 @@ def menu_catalogo(biblioteca,):
                         break
 
                 biblioteca._canciones.eliminar(cancion_a_borrar)
-                baja_binario(RUTA_CANCIONES.with_suffix(".bin"), posicion)
+                baja_binario(RUTA_BIN, posicion)
                 guardar_texto(RUTA_CANCIONES, filas_del_catalogo(biblioteca._canciones), ENCABEZADOS)
                 print(f"✅ Canción eliminada: {cancion_a_borrar.resumen()}")
             except ValueError:

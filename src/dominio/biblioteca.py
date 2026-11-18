@@ -77,3 +77,10 @@ class Biblioteca:
             return 1
         max_id = max(int(c.id) for c in self._canciones)
         return max_id + 1
+
+    def actualizar_canciones(self, nueva_lista):
+            """Reemplaza la lista enlazada interna con una nueva colección ordenada."""
+            nueva_enlazada = ListaEnlazada()
+            for cancion in nueva_lista:
+                nueva_enlazada.insertar_al_final(cancion) # <-- Aquí usamos el método correcto de tu TDA
+            self._canciones = nueva_enlazada

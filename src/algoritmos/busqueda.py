@@ -25,3 +25,20 @@ def busqueda_binaria(coleccion_ordenada, clave, obtener_clave):
         else:
             derecha = medio - 1
     return None
+
+def verificar_orden(coleccion, obtener_clave):
+    """Verifica si la colección está ordenada de forma ascendente.
+    Funciona tanto para listas de Python como para estructuras iterables/enlazadas.
+    """
+    iterador = iter(coleccion)
+    try:
+        anterior = next(iterador)
+    except StopIteration:
+        return True  # Vacía, por ende está ordenada
+
+    for actual in iterador:
+        if obtener_clave(anterior) > obtener_clave(actual):
+            raise ValueError("La colección se encuentra desordenada.")
+        anterior = actual
+        
+    return True

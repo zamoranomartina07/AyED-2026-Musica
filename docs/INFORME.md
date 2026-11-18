@@ -4,6 +4,14 @@ Completar y hacer crecer en cada entrega. No hace falta prosa larga: oraciones c
 
 ## 1. Grupo y tema
 
+###Grupo 45 Comision 1
+
+| Nombre | Mail | GitHub |
+| --- | --- | --- |
+| Martina Zamorano | zamoranomartina07@gmail.com | zamoranomartina07 |
+|  Andrea Lescano Muñoz  | andrealescano200226@gmail.com |andrealescano200226-source |
+| Emiliano German Gomez | emilianog.gomez@outlook.com | emigerman |
+
 - Tema: Musica
 - Por qué lo eligieron : Elegimos el tema **Biblioteca Musical** porque nos permite modelar una estructura clara y realista de datos interactivos sobre un tema de interes de los integrantes del grupo
 
@@ -92,8 +100,6 @@ Mediciones (`time.perf_counter`):
 
 ## 6. Persistencia (E5)
 
-## 6. Persistencia (E5)
-
 - Layout del registro binario: `struct.Struct("<I 30s 25s 30s 12s 2H")` = 105 bytes.
   `id` (I, 4 B), `titulo` (30 B), `artista` (25 B), `album` (30 B), `genero` (12 B), `anio` y `duracion_seg` (H, 2 B c/u). Cadenas UTF-8 recortadas/rellenadas con `\x00` al ancho fijo.
 - Header: `struct.Struct("<4s 1s I")` = 9 bytes: magia `AYED`, tema `M`, cantidad de registros.
@@ -103,4 +109,6 @@ Mediciones (`time.perf_counter`):
 
 | Integrante | Qué hizo | Qué puede defender |
 | --- | --- | --- |
-|  |  |  |
+| Martina Zamorano | Esqueleto, catalogo a mano y carga de versiones a biblioteca.py,  |  |
+| Andrea Lescano | cancion.py, catalogo.py, biblioteca.py, cola_reproduccion.py, historial.py, playlist.py, ordenamiento.py, tabla de complejidad y readme de producto | | 
+| Emiliano Gomez | ordenamiento.py , busqueda.py, binario.py, texto.py  | ordenamiento, busqueda lineal y binaria, carga persistencia de datos en archivo .csv y .bin |

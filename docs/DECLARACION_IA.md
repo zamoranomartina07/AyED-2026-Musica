@@ -12,6 +12,6 @@ Fecha de esta versión del archivo:
 | E4 | 30/10/2026 | Claude | Reemplace  ordenamiento.py con ordenar_seleccion y ordenar_insercion | complete las tabla de complejidas de INFORME.md (listar, búsquedas, ordenamientos, pila, cola y lista enlazada) | revisando cola.py, lista_enlazada.py y pila.py para que las cotas fueran correctas  use claude como guia | Andrea Lescano |
 | E4 | 1/11/2026 | Gemini | Debugs | genere codigo para probar el item 4.5 "time.perf_counter" | inserte el codigo para que funcione en el archivo main.py con un codigo fuera del menu, luego de hacer las pruebas y registrar los tiempos lo borre | Emiliano Gomez |
 | E5 | 15/11/2026 | Gemini | persistencia binaria, menu ABM | binario.py, main.py | corregi funciones de binario.py, genere codigo para implementar las funciones de binario en el main.py y corregi errores generales de la entrega | Emiliano Gomez |
-| E6 |  |  |  |  |  |  |
+| E6 | 18/11/2026 | Gemini | correccion de busqueda binaria (usaba sorted()) | busqueda.py | implemente busqueda.py en el main.py | Emiliano Gomez |
 
 Compromiso: cualquiera del grupo puede explicar cualquier archivo del tag.

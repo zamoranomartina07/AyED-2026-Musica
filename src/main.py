@@ -331,12 +331,12 @@ def menu_ordenamiento(biblioteca):
 """5. FUNCIONES DE BÚSQUEDA Y VERSIONES"""
 def mostrar_versiones(biblioteca):
     id_cancion = input("ID de la canción: ").strip()
-    cancion = biblioteca.buscar(id_cancion)
+    cancion = biblioteca.buscar(int(id_cancion))
     if cancion is None:
         print("No existe esa canción.")
         return
 
-    ids_versiones = biblioteca.versiones_de(id_cancion)
+    ids_versiones = biblioteca.versiones_de(int(id_cancion))
     if not ids_versiones:
         print(f"'{cancion.titulo}' no tiene versiones registradas.")
         return
